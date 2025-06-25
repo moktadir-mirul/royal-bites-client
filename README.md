@@ -27,7 +27,7 @@
 - Food Ordering and canceling.
 - Gallery of Image as slideshow.
 - Several packages are used, fallbacks are implemented.
-- Added basic animation from motion lobrary.
+- Added basic animation from motion library.
 - Firebase email authentication and log in.
 - Fully responsive.
 
