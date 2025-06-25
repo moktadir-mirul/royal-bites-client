@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Farhana Ahmed",
+    "location": "Gulshan, Dhaka",
+    "profession": "Graphic Designer",
+    "image": "https://i.ibb.co/KpjJDPXw/1670812974282-e-2147483647-v-beta-t-Wuev-TWab-XOQBVFCh-JYS5-DAvbsf-No40-Ppjq-Btj-OIl-Ca0.jpg",
+    "review": "Royal Bites never fails to impress! From their delicious burgers to the creamy pastas, every item tastes homemade yet premium. The delivery is always on time and the food arrives hot. I also appreciate their eco-friendly packaging. Definitely my go-to for weekend treats!"
+  },
+  {
+    "id": 2,
+    "title": "Tanvir Hasan",
+    "location": "Dhanmondi, Dhaka",
+    "profession": "Software Engineer",
+    "image": "https://i.ibb.co/bjMc6YfK/image-2272-new.jpg",
+    "review": "I’ve tried many food delivery services, but Royal Bites stands out. Their portions are generous, and the taste is consistently excellent. The customer service is also very responsive and polite. It feels like they genuinely care about quality and customer experience."
+  },
+  {
+    "id": 3,
+    "title": "Nusrat Jahan",
+    "location": "Banani, Dhaka",
+    "profession": "Content Creator",
+    "image": "https://i.ibb.co/RfTm4Gj/64a3b8e2dea11461929584.jpg",
+    "review": "Royal Bites is a hidden gem in Dhaka's food scene! Their fusion dishes are unique and packed with flavor. I love how they experiment with ingredients without compromising on taste. The presentation is always Instagram-worthy too. Highly recommended for foodies!"
+  },
+   {
+    "id": 4,
+    "title": "Asif Rahman",
+    "location": "Uttara, Dhaka",
+    "profession": "University Student",
+    "image": "https://i.ibb.co/WLSHnVb/Asif.jpg",
+    "review": "As a student, I'm always looking for value, and Royal Bites delivers on both taste and price. Their wraps and rice bowls are perfect for lunch. The food tastes fresh every time. Plus, their app is super easy to use for quick ordering!"
+  },
+  {
+    "id": 5,
+    "title": "Sharmin Sultana",
+    "location": "Mirpur, Dhaka",
+    "profession": "School Teacher",
+    "image": "https://i.ibb.co/PvpdB9py/maliha.jpg",
+    "review": "Royal Bites has become my family's favorite! We often order their family meal deals and enjoy a restaurant-quality dinner at home. The kids love their cheesy fries and I love the healthy salad options. Great variety and dependable service!"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "icon": "SiCodefresh",
+    "iconColor": "text-green-500 dark:text-green-400",
+    "title": "Fresh Ingredients",
+    "description": "We use handpicked, locally-sourced ingredients to ensure every bite bursts with freshness."
+  },
+  {
+    "id": 2,
+    "icon": "LuChefHat",
+    "iconColor": "text-red-500 dark:text-red-400",
+    "title": "Culinary Expert",
+    "description": "Our expert culinary chefs blend passion and skill to deliver restaurant-quality meals at your doorstep."
+  },
+  {
+    "id": 3,
+    "icon": "GiFruitBowl",
+    "iconColor": "text-yellow-500 dark:text-yellow-300",
+    "title": "Unique Flavors",
+    "description": "Our menu offers bold, colorful, creative fusions that make every meal a flavorful adventure."
+  },
+  {
+    "id": 4,
+    "icon": "FaVolleyball",
+    "iconColor": "text-blue-500 dark:text-blue-400",
+    "title": "Affordable Combos",
+    "description": "Enjoy premium taste at pocket-friendly prices with our thoughtfully crafted meal deals."
+  }
+]

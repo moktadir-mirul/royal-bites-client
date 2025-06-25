@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+a.active {
+  padding-bottom: 5px;
+  border-bottom: 2px solid brown;
+}
+
+.slide-one-bg {
+  background-image: url("./Images/slide-one-img-c.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.form-bg {
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.72);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.3px);
+-webkit-backdrop-filter: blur(8.3px);
+border: 1px solid rgba(244, 195, 195, 0.3);
+}
+
+.form-bg-d {
+/* From https://css.glass */
+/* From https://css.glass */
+background: rgba(71, 67, 67, 0.44);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.3px);
+-webkit-backdrop-filter: blur(8.3px);
+border: 1px solid rgba(71, 67, 67, 0.3);
+}
+
+
+@custom-variant dark (&:where(.dark, .dark *));
