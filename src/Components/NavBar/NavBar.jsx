@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import mainLogo from "../../assets/royal-logo.png";
 import { Link, NavLink } from "react-router";
 import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
-import { ThemeContext } from "../../ThemeProvider/ThemeContext";
+
 import { AuthContext } from "../../AuthProvider/AuthContext";
 import { toast } from "react-toastify";
 
 const NavBar = () => {
-  const { darkMode } = useContext(ThemeContext);
+
   const { userInfo, handleSignOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
@@ -32,8 +32,8 @@ const NavBar = () => {
   <NavLink className="py-2 px-2" to={"/myOrders"}>My Orders</NavLink>
   </>
   return (
-    <div className="w-full dark:bg-gray-900">
-      <div className="navbar w-11/12 mx-auto">
+    <div className="w-full bg-orange-500 dark:bg-orange-700">
+      <div className="navbar w-11/12 mx-auto py-1">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -42,7 +42,7 @@ const NavBar = () => {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke={darkMode ? "white" : "black"}
+                stroke="white"
               >
                 {" "}
                 <path
@@ -61,20 +61,20 @@ const NavBar = () => {
             </ul>
           </div>
           <div className="flex flex-col md:flex-row gap-1 items-center justify-center">
-            <div className="w-20 h-20 p-2 rounded-full bg-white dark:bg-gray-300">
+            <div className="w-20 h-20 p-2 rounded-full">
               <img
                 className="w-16 h-16"
                 src={mainLogo}
                 alt="Royal Bites Logo"
               />
             </div>
-            <h1 className="hidden md:block play font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-amber-700 dark:from-amber-400 dark:to-amber-600 to-violet-700">
+            <h1 className="hidden md:block play font-extrabold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-white dark:from-white dark:to-orange-100 to-gray-100">
               Royal Bites
             </h1>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 flex gap-5 font-bold dark:text-gray-200">
+          <ul className="menu menu-horizontal px-1 flex gap-5 font-bold text-white dark:text-gray-200">
             {pageLinks}
           </ul>
         </div>
@@ -106,7 +106,7 @@ const NavBar = () => {
             </div>
           ) : (
             <Link to={"/login"}>
-              <button className="bg-orange-500 dark:bg-orange-800 dark:text-gray-100 hover:bg-amber-950 duration-200 text-white font-bold py-2 px-6 cursor-pointer rounded-sm">
+              <button className="bg-white dark:bg-gray-200 dark:text-orange-700 hover:bg-orange-900 hover:text-white duration-200 text-orange-500 font-bold py-2 px-6 cursor-pointer rounded-sm">
                 Log In
               </button>
             </Link>
