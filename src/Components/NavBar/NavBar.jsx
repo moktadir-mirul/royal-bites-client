@@ -23,6 +23,7 @@ const NavBar = () => {
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to={"/allFoods"}>All Foods</NavLink>
       <NavLink to={"/gallery"}>Gallery</NavLink>
+      <NavLink to={"/aboutUs"}>About Us</NavLink>
     </>
   );
 
@@ -55,7 +56,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-white border border-gray-400 dark:bg-gray-900 dark:text-gray-200 rounded-box z-1 mt-3 w-28 p-2 shadow flex flex-col items-start gap-3 font-bold"
+              className="menu menu-sm dropdown-content bg-white border border-gray-400 dark:bg-gray-900 dark:text-gray-100 rounded-box z-1 mt-3 w-28 p-2 shadow flex flex-col items-start gap-3 font-bold"
             >
               {pageLinks}
             </ul>
@@ -74,7 +75,7 @@ const NavBar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 flex gap-5 font-bold text-white dark:text-gray-200">
+          <ul className="menu menu-horizontal px-1 flex gap-5 font-bold text-white dark:text-gray-100">
             {pageLinks}
           </ul>
         </div>

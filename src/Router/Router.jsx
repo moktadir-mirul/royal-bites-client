@@ -15,6 +15,7 @@ import MyFoods from "../Pages/MyFoods/MyFoods";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import ForgetPass from "../Components/ForgetPass/ForgetPass";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 
 export const router = createBrowserRouter([
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
     Component: App,
     children: [
       { index: true, Component: Home },
+      {
+        path: "/aboutUs",
+        Component: AboutUs,
+      },
       {
         path: "/login",
         Component: LogIn

@@ -7,24 +7,24 @@ import { useEffect, useRef } from "react";
 import { animate, inView } from "motion";
 
 function App() {
-  const navRef = useRef();  
-  const footRef = useRef();  
-    useEffect(() => {
-      inView(navRef.current, () => {
-        animate(
-          navRef.current,
-          { y: [-400, 0], opacity: [0, 1] },
-          { duration: 0.9, easing: "ease-out" }
-        );
-      });
-      inView(footRef.current, () => {
-        animate(
-          footRef.current,
-          { y: [400, 0], opacity: [0, 1] },
-          { duration: 1, easing: "ease-out" }
-        );
-      });
-    }, [])
+  const navRef = useRef();
+  const footRef = useRef();
+  useEffect(() => {
+    inView(navRef.current, () => {
+      animate(
+        navRef.current,
+        { y: [-400, 0], opacity: [0, 1] },
+        { duration: 0.9, easing: "ease-out" }
+      );
+    });
+    inView(footRef.current, () => {
+      animate(
+        footRef.current,
+        { y: [400, 0], opacity: [0, 1] },
+        { duration: 1, easing: "ease-out" }
+      );
+    });
+  }, []);
   return (
     <div className="min-h-screen flex flex-col justify-between">
       <div>
@@ -32,13 +32,13 @@ function App() {
           <NavBar></NavBar>
         </nav>
         <Outlet></Outlet>
+        <ToastContainer></ToastContainer>
       </div>
       <div>
         <footer ref={footRef}>
           <Footer></Footer>
         </footer>
       </div>
-      <ToastContainer></ToastContainer>
     </div>
   );
 }

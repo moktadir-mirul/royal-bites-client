@@ -28,12 +28,12 @@ const TopSelling = () => {
 
   return (
     <div className="w-full dark:bg-gray-900">
-      <h2 className="play text-3xl sm:text-4xl font-bold pt-10 text-center dark:text-white">
+      <h2 className="play text-3xl sm:text-4xl font-bold pt-16 text-center dark:text-white">
         Top Selling{" "}
         <span className="text-orange-500 dark:text-amber-500">Foods</span>
       </h2>
-      <div className="w-11/12 mx-auto py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {sortedFoods.slice(0, 6).map((food) => (
+      <div className="w-11/12 mx-auto py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {sortedFoods.slice(0, 8).map((food) => (
           <div
             key={food._id}
             className="rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-slate-100 to-white dark:from-gray-800 dark:to-gray-700 duration-300 border border-gray-200 dark:border-gray-600"
@@ -48,7 +48,7 @@ const TopSelling = () => {
             </div>
 
             {/* Text Section */}
-            <div className="p-5 bg-white dark:bg-gray-700 space-y-2 flex flex-col items-center md:items-start">
+            <div className="p-5 bg-white dark:bg-gray-700 space-y-2 flex flex-col items-center md:items-start md:h-[250px] justify-between">
               <h2 className="text-2xl play font-semibold text-gray-800 dark:text-white">
                 {food.foodName}
               </h2>

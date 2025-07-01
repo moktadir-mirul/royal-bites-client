@@ -63,7 +63,7 @@ const AllFoods = () => {
       ) : (
         ""
       )}
-      <div className="w-11/12 mx-auto pt-2 pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="w-11/12 mx-auto pt-2 pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {foods.map((food) => (
           <div
             key={food._id}
@@ -79,7 +79,7 @@ const AllFoods = () => {
             </div>
 
             {/* Text Area */}
-            <div className="p-5 bg-white dark:bg-gray-700 space-y-3">
+            <div className="p-5 bg-white dark:bg-gray-700 flex flex-col justify-between md:h-[320px]">
               <h2 className="play text-2xl font-bold text-gray-800 dark:text-white">
                 {food.foodName}
               </h2>
