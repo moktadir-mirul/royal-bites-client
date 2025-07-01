@@ -5,6 +5,7 @@ import ClientsReview from "../../Components/ClientsReview/ClientsReview";
 import Speciality from "../../Components/Speciality/Speciality";
 import TopSelling from "../../Components/TopSelling/TopSelling";
 import { animate, inView } from "motion";
+import Recognition from "../../Components/Recognition/Recognition";
 
 const specialityPromise = fetch("/specialityData.json").then((res) =>
   res.json()
@@ -45,6 +46,9 @@ const Home = () => {
         <Suspense fallback={<LoadingAnimation></LoadingAnimation>}>
           <Speciality specialityPromise={specialityPromise}></Speciality>
         </Suspense>
+      </section>
+      <section>
+        <Recognition></Recognition>
       </section>
       <section ref={reviewRef}>
         <ClientsReview></ClientsReview>

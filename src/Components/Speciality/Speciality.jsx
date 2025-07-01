@@ -31,7 +31,7 @@ const Speciality = ({ specialityPromise }) => {
 
   const IconMap = { SiCodefresh, LuChefHat, GiFruitBowl, FaVolleyball };
   return (
-    <section className="py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+    <section className="pt-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
       <div className="w-11/12 mx-auto px-4 text-center">
         <div ref={hdRef}>
           <h2  className="play text-3xl sm:text-4xl font-bold mb-4">
@@ -43,7 +43,7 @@ const Speciality = ({ specialityPromise }) => {
           crafted with love and served with care.
         </p>
         </div>
-        <div ref={cardRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div ref={cardRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature) => {
             const IconComponent = IconMap[feature.icon];
             return (

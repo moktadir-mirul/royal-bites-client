@@ -72,7 +72,7 @@ const TopSelling = () => {
           </div>
         ))}
       </div>
-      <div className="py-5 flex justify-center">
+      <div className="pt-5 flex justify-center">
         <Link to={"/allFoods"}>
           <button className="block max-w-sm px-12 py-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white font-medium hover:bg-orange-800 dark:hover:bg-orange-600 duration-200 text-xl cursor-pointer">
             Show All
