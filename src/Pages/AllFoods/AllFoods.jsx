@@ -11,7 +11,8 @@ const AllFoods = () => {
 
 
   useEffect(() => {
-    fetch(`https://royal-bites-rest-server.vercel.app/foods?searchParams=${searchFood}`)
+    const url = "https://royal-bites-rest-server.vercel.app/foods"
+    fetch(`${url}?searchParams=${searchFood}`)
       .then((res) => res.json())
       .then((data) => {
         setFoods(data);

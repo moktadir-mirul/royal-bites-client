@@ -16,6 +16,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import ForgetPass from "../Components/ForgetPass/ForgetPass";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 
 export const router = createBrowserRouter([
@@ -82,4 +83,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+        path:"/dashboard",
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+      },
 ]);

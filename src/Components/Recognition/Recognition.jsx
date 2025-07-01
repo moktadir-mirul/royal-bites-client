@@ -1,4 +1,5 @@
-import React from "react";
+import { animate, inView } from "motion";
+import React, { useEffect, useRef } from "react";
 import CountUp from "react-countup";
 
 const stats = [
@@ -33,10 +34,28 @@ const stats = [
 ];
 
 const Recognition = () => {
+       const shdRef = useRef();  
+   const scardRef = useRef();  
+     useEffect(() => {
+       inView(shdRef.current, () => {
+         animate(
+           shdRef.current,
+           { x: [400, 0], opacity: [0, 1] },
+           { duration: 0.9, easing: "ease-out" }
+         );
+       });
+       inView(scardRef.current, () => {
+         animate(
+           scardRef.current,
+           { x: [-400, 0], opacity: [0, 1] },
+           { duration: 1, easing: "ease-out" }
+         );
+       });
+     }, [])
   return (
     <div className="w-full dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <div className="pt-16 w-11/12 mx-auto text-center">
-        <div>
+        <div ref={shdRef}>
           <h2 className="play text-3xl sm:text-4xl font-bold mb-4 play">
             Recognize Us In{" "}
             <span className="text-orange-500 dark:text-amber-500">Numbers</span>
@@ -47,7 +66,7 @@ const Recognition = () => {
           </p>
         </div>
         {/* Card Part */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div ref={scardRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, idx) => (
             <div
               key={stat.id}

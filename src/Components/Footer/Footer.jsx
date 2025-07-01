@@ -13,20 +13,24 @@ import { MdEmail } from "react-icons/md";
 import { ThemeContext } from "../../ThemeProvider/ThemeContext";
 import { CiYoutube } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
+import { AuthContext } from "../../AuthProvider/AuthContext";
 
 const Footer = () => {
   const { darkMode } = useContext(ThemeContext);
+  const { userInfo } = useContext(AuthContext);
   const pageLinks = (
     <>
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to={"/allFoods"}>All Foods</NavLink>
       <NavLink to={"/gallery"}>Gallery</NavLink>
+      <NavLink to={"/aboutUs"}>About Us</NavLink>
+      {userInfo && <NavLink to={"/dashboard"}>Dashboard</NavLink>}
     </>
   );
   return (
     <div className="w-full pt-12 pb-8 bg-gradient-to-b from-amber-50 dark:from-amber-950 dark:to-amber-900 to-orange-50 text-amber-800 dark:text-gray-300">
       {/* Footer first Part */}
-      <div className="w-11/12 mx-auto flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row justify-between items-center pb-10">
+      <div className="w-11/12 mx-auto flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row justify-between items-start pb-10">
         <div className="flex-1 text-center flex flex-col items-center justify-center">
           <div className="w-32 h-32 p-2 rounded-full dark:bg-gray-300">
             <img
@@ -99,26 +103,36 @@ const Footer = () => {
         <hr />
         <div className="py-1 flex flex-col md:flex-row-reverse items-center justify-between">
           <div>
-            <h1 className="text-center font-bold">
-            Connect With Us
-          </h1>
-          <div className="flex justify-center items-center  gap-3 py-2">
-            <Link to={"https://www.facebook.com/mirulkhan"} target="_blank">
-              <FaFacebook size={25} color={darkMode ? "papayawhip" : "saddlebrown"} />
-            </Link>
-            <Link to={"https://x.com/"} target="_blank">
-              <FaXTwitter size={25} color={darkMode ? "papayawhip" : "saddlebrown"} />
-            </Link>
-            <Link to={"https://www.instagram.com/mirulkhan/"} target="_blank">
-              <FaInstagram size={25} color={darkMode ? "papayawhip" : "saddlebrown"} />
-            </Link>
-            <Link
-              to={"https://www.youtube.com/@mirulmoktadirkhan2127"}
-              target="_blank"
-            >
-              <CiYoutube size={30} color={darkMode ? "papayawhip" : "saddlebrown"} />
-            </Link>
-          </div>
+            <h1 className="text-center font-bold">Connect With Us</h1>
+            <div className="flex justify-center items-center  gap-3 py-2">
+              <Link to={"https://www.facebook.com/mirulkhan"} target="_blank">
+                <FaFacebook
+                  size={25}
+                  color={darkMode ? "papayawhip" : "saddlebrown"}
+                />
+              </Link>
+              <Link to={"https://x.com/"} target="_blank">
+                <FaXTwitter
+                  size={25}
+                  color={darkMode ? "papayawhip" : "saddlebrown"}
+                />
+              </Link>
+              <Link to={"https://www.instagram.com/mirulkhan/"} target="_blank">
+                <FaInstagram
+                  size={25}
+                  color={darkMode ? "papayawhip" : "saddlebrown"}
+                />
+              </Link>
+              <Link
+                to={"https://www.youtube.com/@mirulmoktadirkhan2127"}
+                target="_blank"
+              >
+                <CiYoutube
+                  size={30}
+                  color={darkMode ? "papayawhip" : "saddlebrown"}
+                />
+              </Link>
+            </div>
           </div>
           <h1 className="text-center text-sm">
             © 2025 Royal Bites. All rights reserved.{" "}

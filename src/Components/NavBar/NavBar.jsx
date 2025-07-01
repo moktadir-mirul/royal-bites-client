@@ -24,6 +24,9 @@ const NavBar = () => {
       <NavLink to={"/allFoods"}>All Foods</NavLink>
       <NavLink to={"/gallery"}>Gallery</NavLink>
       <NavLink to={"/aboutUs"}>About Us</NavLink>
+      {
+        userInfo && <NavLink to={"/dashboard"}>Dashboard</NavLink>
+      }
     </>
   );
 
@@ -82,12 +85,12 @@ const NavBar = () => {
         <div className="navbar-end space-x-4">
           <DarkModeToggle></DarkModeToggle>
           {userInfo ? (
-            <div className="flex flex-col md:flex-row justify-center items-center gap-3">
+            <div className="flex justify-center items-center gap-3">
               <div className="dropdown dropdown-bottom dropdown-center">
                 <img
                   role="button"
                   tabIndex={0}
-                  className="w-16 h-16 rounded-full ring ring-orange-500 dark:ring-amber-800"
+                  className="w-12 h-12 md:w-16 md:h-16 rounded-full ring ring-gray-100 dark:ring-gray-200"
                   src={userInfo.photoURL}
                   alt=""
                 />
@@ -100,7 +103,7 @@ const NavBar = () => {
               </div>
               <button
                 onClick={handleLogOut}
-                className="bg-orange-500 dark:bg-orange-800 dark:text-gray-100 hover:bg-amber-950 duration-200 text-white font-bold py-2 px-6 cursor-pointer rounded-sm"
+                className="bg-white dark:bg-gray-200 dark:text-orange-700 hover:bg-orange-900 hover:text-white duration-200 text-orange-500 text-xs md:text-base font-medium py-1 px-2 md:px-4 cursor-pointer rounded-sm"
               >
                 Log Out
               </button>
