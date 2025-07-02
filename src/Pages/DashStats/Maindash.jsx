@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthContext";
-import { useLoaderData } from "react-router";
 
 const Maindash = () => {
   const { userInfo } = useContext(AuthContext);
-const allFoods = useLoaderData();
+  const [allFoods, setAllFoods] = useState();
   const [orders, setOrders] = useState();
 
   useEffect(() => {
+    fetch("https://royal-bites-rest-server.vercel.app/foods")
+      .then((res) => res.json())
+      .then((data) => setAllFoods(data));
+
     fetch(
       `https://royal-bites-rest-server.vercel.app/foodOrders?email=${userInfo.email}`,
       {

@@ -90,8 +90,6 @@ export const router = createBrowserRouter([
     children: [
       {
         index:true,
-        loader: () => fetch("https://royal-bites-rest-server.vercel.app/foods"),
-        HydrateFallback: LoadingAnimation,
         element: <PrivateRoute><Maindash></Maindash></PrivateRoute>
       },
       {
