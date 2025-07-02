@@ -34,7 +34,7 @@ const MyFoods = () => {
           You haven't added any foods yet!
         </h2>
         <div className="flex justify-center py-10">
-          <Link to={"/addFood"}>
+          <Link to={"/dashboard/addFood"}>
             <button className="max-w-sm mt-2 px-9 py-2 bg-orange-500 dark:bg-orange-800 text-white font-medium rounded-lg hover:scale-105 hover:bg-orange-800 dark:hover:bg-orange-700 transition duration-200 cursor-pointer">
               Add Food
             </button>
@@ -65,7 +65,7 @@ const MyFoods = () => {
             </div>
 
             {/* Text Area */}
-            <div className="p-5 bg-white dark:bg-gray-700 space-y-3">
+            <div className="p-5 bg-white dark:bg-gray-700 h-[350px] flex flex-col justify-between">
               <h2 className="play text-2xl font-bold text-gray-800 dark:text-white">
                 {food.foodName}
               </h2>
@@ -98,7 +98,7 @@ const MyFoods = () => {
                 <span>{food.price}</span>
               </p>
 
-              <Link to={`/updateFood/${food._id}`}>
+              <Link to={`/dashboard/updateFood/${food._id}`}>
                 <button className="w-full mt-2 px-4 py-2 bg-orange-500 dark:bg-orange-800 text-white font-bold rounded-lg hover:scale-105 hover:bg-orange-800 dark:hover:bg-orange-700 transition duration-200 cursor-pointer flex items-center justify-center gap-2">
                   <MdModeEdit size={20}></MdModeEdit>Update Food
                 </button>

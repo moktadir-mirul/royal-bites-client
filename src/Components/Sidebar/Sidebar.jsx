@@ -12,9 +12,11 @@ const Sidebar = ({ isOpen, onClose }) => {
     const {userInfo} = useContext(AuthContext)
 
   const links = [
-    { path: "/dashboard/allplants", label: "All Plants" },
-    { path: "/dashboard/addplant", label: "Add Plant" },
-    { path: "/dashboard/myplants", label: "My Plants" },
+    { path: "/dashboard/stats", label: "Stats" },
+    { path: "/dashboard/allFoods", label: "All Foods" },
+    { path: "/dashboard/addFood", label: "Add Food" },
+    { path: "/dashboard/myFoods", label: "My Foods" },
+    { path: "/dashboard/myOrders", label: "My Orders" },
   ];
 
   return (

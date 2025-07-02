@@ -8,11 +8,13 @@ const AllFoods = () => {
   const { foods, setFoods } = useContext(AuthContext);
   const [allFoodsLoading, setAllFoodsLoading] = useState(true);
   const [searchFood, setSearchFood] = useState("");
+  const [sortBy, setSortBy] = useState('name'); 
+const [sortOrder, setSortOrder] = useState('asc');
 
 
   useEffect(() => {
     const url = "https://royal-bites-rest-server.vercel.app/foods"
-    fetch(`${url}?searchParams=${searchFood}`)
+    fetch(`${url}?searchParams=${searchFood}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
       .then((res) => res.json())
       .then((data) => {
         setFoods(data);
@@ -20,7 +22,7 @@ const AllFoods = () => {
       });
     
     document.title = "All Food | Royal Bites";
-  }, [setFoods, searchFood]);
+  }, [setFoods, searchFood, sortBy, sortOrder]);
 
   if (allFoodsLoading) {
     return <LoadingAnimation></LoadingAnimation>;
@@ -31,7 +33,7 @@ const AllFoods = () => {
       <h2 className="play text-4xl lg:text-5xl font-bold pt-10 text-center dark:text-white">
         All <span className="text-orange-500 dark:text-amber-500">Foods</span>
       </h2>
-      <div className="pt-8 pb-2 text-black flex justify-center">
+      <div className="pt-8 pb-2 text-black flex flex-col md:flex-row items-center gap-2 justify-center">
         <label className="input bg-white dark:bg-gray-300">
           <svg
             className="h-[1em] opacity-50 "
@@ -56,6 +58,25 @@ const AllFoods = () => {
             className="dark:bg-gray-300 dark:border-white "
           />
         </label>
+        <div className="flex gap-4 my-4 text-black">
+  <select
+    className="p-2 border rounded dark:bg-gray-300"
+    value={sortBy}
+    onChange={(e) => setSortBy(e.target.value)}
+  >
+    <option value="name">Sort by Name</option>
+    <option value="price">Sort by Price</option>
+  </select>
+
+  <select
+    className="p-2 border rounded dark:bg-gray-300"
+    value={sortOrder}
+    onChange={(e) => setSortOrder(e.target.value)}
+  >
+    <option value="asc">Ascending (A-Z / Low → High)</option>
+    <option value="desc">Descending (Z-A / High → Low)</option>
+  </select>
+</div>
       </div>
       {foods <= 0 ? (
         <h2 className="play text-4xl lg:text-5xl font-bold pt-10 text-center text-red-500 dark:text-white">

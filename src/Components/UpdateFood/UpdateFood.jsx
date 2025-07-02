@@ -63,7 +63,7 @@ const UpdateFood = () => {
           });
           setFoods(updatedFoods);
           toast("Food updated successfully!");
-          navigate("/myFoods");
+          navigate("/dashboard/myFoods");
         }
       })
       .catch((err) => toast.error(err.message));

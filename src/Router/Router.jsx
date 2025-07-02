@@ -17,7 +17,9 @@ import MyOrders from "../Pages/MyOrders/MyOrders";
 import ForgetPass from "../Components/ForgetPass/ForgetPass";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Dashboard from "../Pages/Dashboard/Dashboard";
-
+import DashAllFoods from "../Pages/DashAllFoods/DashAllFoods";
+import DashStats from "../Pages/DashStats/DashStats";
+import Maindash from "../Pages/DashStats/Maindash";
 
 export const router = createBrowserRouter([
   {
@@ -31,52 +33,47 @@ export const router = createBrowserRouter([
       },
       {
         path: "/login",
-        Component: LogIn
+        Component: LogIn,
       },
       {
         path: "/register",
-        Component: Register
+        Component: Register,
       },
       {
         path: "/forgetPass",
-        element: <PrivateRoute><ForgetPass></ForgetPass></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <ForgetPass></ForgetPass>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/gallery",
-        Component: Gallery
+        Component: Gallery,
       },
-      {
-        path: "/addFood",
-        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
-      },
-      {
-        path: "/updateFood/:id",
-        loader: ({params}) => fetch(`https://royal-bites-rest-server.vercel.app/foods/${params.id}`),
-        HydrateFallback: LoadingAnimation,
-        element: <PrivateRoute><UpdateFood></UpdateFood></PrivateRoute>
-      },
+
       {
         path: "/allFoods",
-        Component: AllFoods
+        Component: AllFoods,
       },
       {
         path: "/details/:id",
-        element: <FoodDetails></FoodDetails>
+        element: <FoodDetails></FoodDetails>,
       },
       {
         path: "/purchaseFood/:id",
-        loader: ({params}) => fetch(`https://royal-bites-rest-server.vercel.app/foods/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://royal-bites-rest-server.vercel.app/foods/${params.id}`
+          ),
         HydrateFallback: LoadingAnimation,
-        element: <PrivateRoute><PurchaseFood></PurchaseFood></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <PurchaseFood></PurchaseFood>
+          </PrivateRoute>
+        ),
       },
-      {
-        path: "/myFoods",
-        element: <PrivateRoute><MyFoods></MyFoods></PrivateRoute>
-      },
-      {
-        path: "/myOrders",
-        element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
-      },
+
       {
         path: "*",
         Component: Error,
@@ -84,7 +81,66 @@ export const router = createBrowserRouter([
     ],
   },
   {
-        path:"/dashboard",
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index:true,
+        element: <PrivateRoute><Maindash></Maindash></PrivateRoute>
       },
+      {
+        path: "/dashboard/stats",
+        element: <PrivateRoute><DashStats></DashStats></PrivateRoute>
+      },
+      {
+        path: "/dashboard/myFoods",
+        element: (
+          <PrivateRoute>
+            <MyFoods></MyFoods>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allFoods",
+        element: <PrivateRoute><DashAllFoods></DashAllFoods></PrivateRoute>
+      },
+      {
+        path: "/dashboard/details/:id",
+        element: <FoodDetails></FoodDetails>,
+      },
+      {
+        path: "/dashboard/myOrders",
+        element: (
+          <PrivateRoute>
+            <MyOrders></MyOrders>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/addFood",
+        element: (
+          <PrivateRoute>
+            <AddFood></AddFood>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/updateFood/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://royal-bites-rest-server.vercel.app/foods/${params.id}`
+          ),
+        HydrateFallback: LoadingAnimation,
+        element: (
+          <PrivateRoute>
+            <UpdateFood></UpdateFood>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
 ]);
