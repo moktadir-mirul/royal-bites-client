@@ -10,7 +10,7 @@ const OrderCard = ({order, idx, handleOrderDelete}) => {
     return (
         <div className={`flex flex-col md:flex-row ${ idx % 2 !== 0 ? "md:flex-row-reverse" : ""} justify-between items-center border shadow-lg border-gray-200 dark:border-gray-600 rounded-xl`}>
             {/* Text Area */}
-            <div className='w-full h-full bg-white dark:bg-gray-700 rounded-xl text-black dark:text-white p-5 space-y-2'>
+            <div className='w-full h-[380px] bg-white dark:bg-gray-700 rounded-xl text-black dark:text-white p-5 flex flex-col justify-between'>
                 <h1 className='text-2xl font-bold play text-orange-500'>{order.foodName}</h1>
                 <p>Quantity : <span className='font-bold inter'>{order.quantity}</span></p>
                 <p className='flex items-center'>Price : <TbCurrencyTaka></TbCurrencyTaka><span className='font-bold'>{order.price}</span></p>
