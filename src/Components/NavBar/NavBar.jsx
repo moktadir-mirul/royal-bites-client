@@ -1,12 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import mainLogo from "../../assets/royal-logo.png";
 import { Link, NavLink } from "react-router";
 import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
 
 import { AuthContext } from "../../AuthProvider/AuthContext";
 import { toast } from "react-toastify";
+import { animate, inView } from "motion";
 
 const NavBar = () => {
+  const navRef = useRef()
+  useEffect(() => {
+        inView(navRef.current, () => {
+      animate(
+        navRef.current,
+        { y: [-400, 0], opacity: [0, 1] },
+        { duration: 0.9, easing: "ease-out" }
+      );
+    });
+  }, [])
 
   const { userInfo, handleSignOut } = useContext(AuthContext);
 
@@ -30,13 +41,8 @@ const NavBar = () => {
     </>
   );
 
-  const myLinks = <>
-  <NavLink className="py-2 px-2" to={"/myFoods"}>My Foods</NavLink>
-  <NavLink className="py-2 px-2" to={"/addFood"}>Add Food</NavLink>
-  <NavLink className="py-2 px-2" to={"/myOrders"}>My Orders</NavLink>
-  </>
   return (
-    <div className="w-full bg-orange-500 dark:bg-orange-700">
+    <div ref={navRef} className="sticky top-0 z-50 w-full bg-orange-500 dark:bg-orange-700">
       <div className="navbar w-11/12 mx-auto py-1">
         <div className="navbar-start">
           <div className="dropdown">
@@ -86,21 +92,12 @@ const NavBar = () => {
           <DarkModeToggle></DarkModeToggle>
           {userInfo ? (
             <div className="flex justify-center items-center gap-3">
-              <div className="dropdown dropdown-bottom dropdown-center">
                 <img
                   role="button"
-                  tabIndex={0}
                   className="w-12 h-12 md:w-16 md:h-16 rounded-full ring ring-gray-100 dark:ring-gray-200"
                   src={userInfo.photoURL}
                   alt=""
                 />
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-28 p-2 shadow-sm dark:bg-gray-900 dark:text-white border dark:border-gray-200"
-                >
-                  {myLinks}
-                </ul>
-              </div>
               <button
                 onClick={handleLogOut}
                 className="bg-white dark:bg-gray-200 dark:text-orange-700 hover:bg-orange-900 hover:text-white duration-200 text-orange-500 text-xs md:text-base font-medium py-1 px-2 md:px-4 cursor-pointer rounded-sm"

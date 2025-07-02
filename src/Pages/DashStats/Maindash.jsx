@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthContext";
+import { useLoaderData } from "react-router";
 
 const Maindash = () => {
   const { userInfo } = useContext(AuthContext);
-  const [allFoods, setAllFoods] = useState();
+const allFoods = useLoaderData();
   const [orders, setOrders] = useState();
 
   useEffect(() => {
-    fetch("https://royal-bites-rest-server.vercel.app/foods")
-      .then((res) => res.json())
-      .then((data) => setAllFoods(data));
-
     fetch(
       `https://royal-bites-rest-server.vercel.app/foodOrders?email=${userInfo.email}`,
       {
@@ -22,7 +19,6 @@ const Maindash = () => {
       .then((res) => res.json())
       .then((data) => {
         setOrders(data);
-        console.log(data);
       });
   }, [userInfo.accessToken, userInfo.email]);
 
@@ -39,7 +35,7 @@ const myAddedFoods = allFoods?.filter(food => food.userEmail === userInfo.email)
   );
 };
 
-const Card = ({ title, value, color }) => (
+const Card = ({ title, value }) => (
   <div className={`bg-white dark:bg-gray-300 p-4 rounded shadow text-center`}>
     <h3 className="text-md font-semibold">{title}</h3>
     <p className={`text-2xl text-orange-500 dark:text-orange-400 font-bold mt-1 inter`}>{value}</p>
