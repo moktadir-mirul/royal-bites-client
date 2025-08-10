@@ -5,10 +5,8 @@ import moment from "moment";
 import { Link, useLoaderData, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
-
 const PurchaseFood = () => {
-    const currentTime = moment().format("YYYY-MM-DD");
-    // THH:mm:ss
+  const currentTime = moment().format("YYYY-MM-DD");
 
   const { userInfo } = useContext(AuthContext);
 
@@ -20,27 +18,30 @@ const PurchaseFood = () => {
 
   const naviagate = useNavigate();
 
-
   const { darkMode } = useContext(ThemeContext);
   useEffect(() => {
     document.title = "Purchase Food | Royal Bites";
-  }, [])
+  }, []);
 
   if (userInfo.email === purchasingFood.userEmail) {
     return (
       // <div className="w-full bg-[url(./Images/footer-bg.png)] dark:bg-gray-900">
-      <div className={`w-full bg-[url(./Images/add-bg.jpg)] dark:bg-[url(./Images/add-food-d.jpg)] bg-no-repeat bg-cover`}>
-        <div className={`flex flex-col justify-center py-10 ${darkMode ? "form-bg-d" : "form-bg"}`}>
+      <div
+        className={`w-full bg-[url(./Images/add-bg.jpg)] dark:bg-[url(./Images/add-food-d.jpg)] bg-no-repeat bg-cover`}
+      >
+        <div
+          className={`flex flex-col justify-center py-10 ${
+            darkMode ? "form-bg-d" : "form-bg"
+          }`}
+        >
           <h1 className="play py-5 arap text-center font-bold text-4xl text-red-500 dark:text-orange-300">
             Sorry, you can't buy this food as you added this food!
           </h1>
           <Link to={"/allFoods"}>
             <div className="flex justify-center">
-              <button
-              className="my-4 block max-w-sm px-9 py-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white hover:bg-orange-800 dark:hover:bg-orange-600 transition duration-300 text-xl font-bold cursor-pointer"
-            >
-              Buy Some Other Food
-            </button>
+              <button className="my-4 block max-w-sm px-9 py-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white hover:bg-orange-800 dark:hover:bg-orange-600 transition duration-300 text-xl font-bold cursor-pointer">
+                Buy Some Other Food
+              </button>
             </div>
           </Link>
         </div>
@@ -48,20 +49,18 @@ const PurchaseFood = () => {
     );
   }
 
-
   const handleFoodQuantity = (e) => {
     setQuantityError("");
     const actualQuantity = purchasingFood.quantity;
     const orderQuantity = e.target.value;
     if (orderQuantity <= 0) {
-      setQuantityError("You need to buy at least one!")
-    }
-    else if(orderQuantity > actualQuantity) {
-      setQuantityError("You can't buy more than the actual quantity!")
+      setQuantityError("You need to buy at least one!");
+    } else if (orderQuantity > actualQuantity) {
+      setQuantityError("You can't buy more than the actual quantity!");
     } else if (orderQuantity <= actualQuantity) {
       setQuantityError("");
       setFoodQuantity(orderQuantity);
-  }
+    }
   };
 
   const handlePurchaseFood = (e) => {
@@ -69,29 +68,29 @@ const PurchaseFood = () => {
     const form = e.target;
     const formData = new FormData(form);
     const purchaseData = Object.fromEntries(formData.entries());
-    if(qunatityError) {
-      return setQuantityError("Please select a valid quantity first!")
+    if (qunatityError) {
+      return setQuantityError("Please select a valid quantity first!");
     }
-    if(!qunatityError) {
+    if (!qunatityError) {
       purchaseData.imageUrl = purchasingFood.imageUrl;
       purchaseData.buyingDate = moment().format("YYYY-MM-DDTHH:mm");
       purchaseData.foodId = purchasingFood._id;
       fetch("https://royal-bites-rest-server.vercel.app/foodOrders", {
         method: "POST",
         headers: {
-          "content-type" : "application/json",
-          'Authorization' : `Bearer ${userInfo.accessToken}`
+          "content-type": "application/json",
+          Authorization: `Bearer ${userInfo.accessToken}`,
         },
-        body: JSON.stringify(purchaseData)
+        body: JSON.stringify(purchaseData),
       })
-      .then(res => res.json())
-      .then(data => {
-        if(data.insertedId) {
-          toast.success("Order placed successfully!");
-          form.reset();
-          naviagate("/myOrders")
-        }
-      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            toast.success("Order placed successfully!");
+            form.reset();
+            naviagate("/myOrders");
+          }
+        });
     }
   };
 
@@ -104,11 +103,13 @@ const PurchaseFood = () => {
           } shrink-0 shadow-xl`}
         >
           <div className="card-body">
-            {
-              purchasingFood.quantity <= 0 ? <h1 className="play pb-2 arap text-center font-bold text-4xl text-red-500 dark:text-orange-300">
-              Sorry, this item is not available right now!!!
-            </h1> : ""
-            }
+            {purchasingFood.quantity <= 0 ? (
+              <h1 className="play pb-2 arap text-center font-bold text-4xl text-red-500 dark:text-orange-300">
+                Sorry, this item is not available right now!!!
+              </h1>
+            ) : (
+              ""
+            )}
             <h1 className="play pb-2 arap text-center font-bold text-4xl text-orange-500 dark:text-gray-300">
               Purchase Food
             </h1>
@@ -132,7 +133,8 @@ const PurchaseFood = () => {
                 {/* Food Quantity */}
                 <div className="fieldset">
                   <label className="label text-lg text-orange-500 font-bold dark:text-gray-300">
-                    Quantity {`(Available Quantity: ${purchasingFood.quantity})`}
+                    Quantity{" "}
+                    {`(Available Quantity: ${purchasingFood.quantity})`}
                   </label>
                   <input
                     name="quantity"
@@ -151,7 +153,10 @@ const PurchaseFood = () => {
                 {/* Price */}
                 <div className="fieldset">
                   <label className="label text-lg text-orange-500 font-bold dark:text-gray-300">
-                    Price <span className="text-red-500 dark:text-amber-400">(Only Amount)</span>
+                    Price{" "}
+                    <span className="text-red-500 dark:text-amber-400">
+                      (Only Amount)
+                    </span>
                   </label>
                   <input
                     type="number"
@@ -217,19 +222,21 @@ const PurchaseFood = () => {
 
               {/* Input field ends */}
 
-              {
-                purchasingFood.quantity <= 0 ? <button
-                type="submit"
-                className="my-4 block w-full p-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white hover:bg-orange-800 dark:hover:bg-orange-600 transition duration-300 text-xl font-bold btn btn-disabled cursor-not-allowed"
-              >
-                Purchase Food
-              </button> : <button
-                type="submit"
-                className="my-4 block w-full p-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white hover:bg-orange-800 dark:hover:bg-orange-600 transition duration-300 text-xl font-bold cursor-pointer"
-              >
-                Purchase Food
-              </button>
-              }
+              {purchasingFood.quantity <= 0 ? (
+                <button
+                  type="submit"
+                  className="my-4 block w-full p-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white hover:bg-orange-800 dark:hover:bg-orange-600 transition duration-300 text-xl font-bold btn btn-disabled cursor-not-allowed"
+                >
+                  Purchase Food
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="my-4 block w-full p-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white hover:bg-orange-800 dark:hover:bg-orange-600 transition duration-300 text-xl font-bold cursor-pointer"
+                >
+                  Purchase Food
+                </button>
+              )}
             </form>
           </div>
         </div>

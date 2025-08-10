@@ -12,7 +12,7 @@ const ThemeProvider = ({ children }) => {
   }, [darkMode]);
   return (
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
-        {children}
+      {children}
     </ThemeContext.Provider>
   );
 };

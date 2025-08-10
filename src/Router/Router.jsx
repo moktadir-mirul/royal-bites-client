@@ -89,12 +89,20 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        index:true,
-        element: <PrivateRoute><Maindash></Maindash></PrivateRoute>
+        index: true,
+        element: (
+          <PrivateRoute>
+            <Maindash></Maindash>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/stats",
-        element: <PrivateRoute><DashStats></DashStats></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <DashStats></DashStats>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/myFoods",
@@ -106,7 +114,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/allFoods",
-        element: <PrivateRoute><DashAllFoods></DashAllFoods></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <DashAllFoods></DashAllFoods>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/details/:id",

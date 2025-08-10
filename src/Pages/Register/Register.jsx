@@ -8,60 +8,60 @@ import { toast } from "react-toastify";
 import { animate, inView } from "motion";
 
 const Register = () => {
-  const {userInfo} = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
 
   const { darkMode } = useContext(ThemeContext);
-  const {handleUserReg, handleUpdateUser} = useContext(AuthContext);
+  const { handleUserReg, handleUpdateUser } = useContext(AuthContext);
 
   const regRef = useRef();
-  
-    useEffect(() => {
-      inView(regRef.current, () => {
-        animate(
-          regRef.current,
-          { y: [-500, 0], opacity: [0, 1] },
-          { duration: 1.1, easing: "ease-out" }
-        );
-      });
-      document.title = "Register | Royal Bites";
-    }, []);
 
+  useEffect(() => {
+    inView(regRef.current, () => {
+      animate(
+        regRef.current,
+        { y: [-500, 0], opacity: [0, 1] },
+        { duration: 1.1, easing: "ease-out" }
+      );
+    });
+    document.title = "Register | Royal Bites";
+  }, []);
 
-  const handleRegister = e => {
+  const handleRegister = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     const name = e.target.name.value;
     const photoUrl = e.target.photoUrl.value;
-    
+
     const passReg = /(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-    if(!passReg.test(password)) {
-      return setPasswordError("Password must contain one uppercase letter, one lower case letter and needs to be minimum six character long.")
+    if (!passReg.test(password)) {
+      return setPasswordError(
+        "Password must contain one uppercase letter, one lower case letter and needs to be minimum six character long."
+      );
     }
 
     handleUserReg(email, password)
-    .then(() => {
+      .then(() => {
         handleUpdateUser(name, photoUrl)
-        .then(() => {
-          toast.success("New user registration successful.");
-          navigate("/")
-        })
-        .catch(err => toast.error(err.message))
-    })
-    .catch(err => {
-      toast.error(err.message);
-    })
-  }
-
+          .then(() => {
+            toast.success("New user registration successful.");
+            navigate("/");
+          })
+          .catch((err) => toast.error(err.message));
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
 
   return (
     <div className="w-full h-full px-2 md:px-0 xl:h-screen bg-[url(./Images/reg-bg-f.jpg)] dark:bg-[url(./Images/reg-bg-fdd.jpg)] bg-no-repeat bg-cover">
       <div className="flex justify-center py-10">
         <div
-        ref={regRef}
+          ref={regRef}
           className={`w-full ${
             darkMode ? "form-bg-d" : "form-bg"
           } max-w-lg p-8 space-y-3 rounded-xl dark:text-gray-300`}
@@ -136,21 +136,19 @@ const Register = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 className="px-2 py-1 cursor-pointer bg-gray-100 dark:bg-gray-800 absolute right-6 top-10 z-20 rounded-sm"
               >
-                {showPassword ? (
-                  <FaEye size={27} />
-                ) : (
-                  <FaEyeSlash size={27} />
-                )}
+                {showPassword ? <FaEye size={27} /> : <FaEyeSlash size={27} />}
               </p>
               <p className="text-red-700 dark:text-red-300">{passwordError}</p>
             </div>
-            {
-              userInfo ? <p className="block w-full p-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white font-medium hover:bg-orange-800 dark:hover:bg-orange-600 duration-200 text-xl cursor-pointer">
-              Already Logged In
-            </p> : <button className="block w-full p-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white font-medium hover:bg-orange-800 dark:hover:bg-orange-600 duration-200 text-xl cursor-pointer">
-              Register
-            </button>
-            }
+            {userInfo ? (
+              <p className="block w-full p-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white font-medium hover:bg-orange-800 dark:hover:bg-orange-600 duration-200 text-xl cursor-pointer">
+                Already Logged In
+              </p>
+            ) : (
+              <button className="block w-full p-3 text-center rounded-sm bg-orange-500 dark:bg-orange-800 text-white font-medium hover:bg-orange-800 dark:hover:bg-orange-600 duration-200 text-xl cursor-pointer">
+                Register
+              </button>
+            )}
           </form>
           <p className="text-xl py-3 text-center sm:px-6 dark:text-gray-300 play font-medium">
             Already have an account ? {`${" "}`}
