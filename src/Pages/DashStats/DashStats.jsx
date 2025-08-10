@@ -26,23 +26,26 @@ const DashStats = () => {
       });
   }, [userInfo.accessToken, userInfo.email]);
 
-const myAddedFoods = allFoods?.filter(food => food.userEmail === userInfo.email);
+  const myAddedFoods = allFoods?.filter(
+    (food) => food.userEmail === userInfo.email
+  );
   return (
     <div className="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <Card title="🍔 Total Foods" value={allFoods?.length} />
-      <Card
-        title="🛒 Foods Added by You"
-        value={myAddedFoods?.length}
-      />
+      <Card title="🛒 Foods Added by You" value={myAddedFoods?.length} />
       <Card title="📦 Food Ordered by You" value={orders?.length} />
     </div>
   );
 };
 
-const Card = ({ title, value}) => (
+const Card = ({ title, value }) => (
   <div className={`bg-white dark:bg-gray-300 p-4 rounded shadow text-center`}>
     <h3 className="text-md font-semibold">{title}</h3>
-    <p className={`text-2xl text-orange-500 dark:text-orange-400 font-bold mt-1 inter`}>{value}</p>
+    <p
+      className={`text-2xl text-orange-500 dark:text-orange-400 font-bold mt-1 inter`}
+    >
+      {value}
+    </p>
   </div>
 );
 
