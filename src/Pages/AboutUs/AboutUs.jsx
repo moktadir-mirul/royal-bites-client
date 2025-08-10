@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router";
 import royalImg from "../../Images/royal-bites2.jpeg";
+import { animate, inView } from "motion";
 
 const AboutUs = () => {
+  const abtImg = useRef();  
+  const abtRef = useRef();
+     const cardRef = useRef();  
+       useEffect(() => {
+         inView(abtImg.current, () => {
+           animate(
+             abtImg.current,
+             { x: [-600, 0], opacity: [0, 1] },
+             { duration: 0.9, easing: "ease-out" }
+           );
+         });
+         inView(abtRef.current, () => {
+           animate(
+             abtRef.current,
+             { x: [900, 0], opacity: [0, 1] },
+             { duration: 1, easing: "ease-out" }
+           );
+         });
+       }, [])
   return (
     <section className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 py-12 px-4">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-start">
+      <div ref={abtImg} className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-start">
         {/* Image */}
         <div className="flex justify-center">
           <img
@@ -16,7 +36,7 @@ const AboutUs = () => {
         </div>
 
         {/* Text Content */}
-        <div>
+        <div ref={abtRef}>
           <h2 className="text-4xl font-extrabold text-orange-500 mb-4">
             About Royal Bites
           </h2>
