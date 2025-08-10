@@ -12,7 +12,6 @@ const specialityPromise = fetch("/specialityData.json").then((res) =>
 );
 
 const Home = () => {
-
   const bannerRef = useRef();
   const reviewRef = useRef();
 
@@ -31,9 +30,9 @@ const Home = () => {
         { duration: 0.9, easing: "ease-out" }
       );
     });
-        document.title = "Home | Royal Bites";
+    document.title = "Home | Royal Bites";
   }, []);
-  
+
   return (
     <div>
       <section ref={bannerRef}>
