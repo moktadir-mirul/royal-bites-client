@@ -6,7 +6,7 @@ import { AuthContext } from "../../AuthProvider/AuthContext";
 
 const ForgetPass = () => {
   const { darkMode } = useContext(ThemeContext);
-  const {handleResetPassword} = useContext(AuthContext);
+  const { handleResetPassword } = useContext(AuthContext);
   const passRef = useRef();
   useEffect(() => {
     inView(passRef.current, () => {
@@ -23,11 +23,11 @@ const ForgetPass = () => {
     e.preventDefault();
     const email = e.target.email.value;
     handleResetPassword(email)
-    .then(() => {
+      .then(() => {
         toast("An email was sent to you for password change");
         e.target.reset();
-    })
-    .catch(err => toast.error(err.message));
+      })
+      .catch((err) => toast.error(err.message));
   };
   return (
     <div className="w-full h-full px-2 md:px-0 xl:h-screen bg-[url(./Images/login-bg-4.jpg)] dark:bg-[url(./Images/login-bg-d.jpg)] bg-no-repeat bg-cover">

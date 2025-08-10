@@ -1,15 +1,11 @@
-
-// import { X } from "lucide-react";
 import { useContext } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { NavLink } from "react-router";
-import { RiPlantFill } from "react-icons/ri";
 import { AuthContext } from "../../AuthProvider/AuthContext";
 import { GrRestaurant } from "react-icons/gr";
 
 const Sidebar = ({ isOpen, onClose }) => {
-
-    const {userInfo} = useContext(AuthContext)
+  const { userInfo } = useContext(AuthContext);
 
   const links = [
     { path: "/dashboard/stats", label: "Stats" },
@@ -47,14 +43,18 @@ const Sidebar = ({ isOpen, onClose }) => {
         <div className="p-4 border-b flex flex-row md:flex-col items-center space-x-3 gap-3">
           <div>
             <img
-            src={userInfo.photoURL}
-            alt={userInfo.displayName}
-            className="w-10 md:w-32 h-10 md:h-32 rounded-full"
-          />
+              src={userInfo.photoURL}
+              alt={userInfo.displayName}
+              className="w-10 md:w-32 h-10 md:h-32 rounded-full"
+            />
           </div>
           <div className="space-y-3 flex flex-col items-center justify-center">
-            <h3 className="font-bold text-xl text-orange-700 dark:text-gray-200">{userInfo.displayName}</h3>
-            <p className="text-sm flex items-center gap-2 text-orange-700 dark:text-gray-200">Food Enthusiasist <GrRestaurant color="orange" size={20}/></p>
+            <h3 className="font-bold text-xl text-orange-700 dark:text-gray-200">
+              {userInfo.displayName}
+            </h3>
+            <p className="text-sm flex items-center gap-2 text-orange-700 dark:text-gray-200">
+              Food Enthusiasist <GrRestaurant color="orange" size={20} />
+            </p>
           </div>
         </div>
 

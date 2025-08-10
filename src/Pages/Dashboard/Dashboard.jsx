@@ -48,7 +48,7 @@ const Dashboard = () => {
         </button>
 
         {/* Dashboard content */}
-        {/* <StatusCards /> */}
+
         <div className="mt-6">
           <Outlet />
         </div>

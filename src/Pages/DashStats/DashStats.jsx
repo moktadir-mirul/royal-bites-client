@@ -22,7 +22,6 @@ const DashStats = () => {
       .then((res) => res.json())
       .then((data) => {
         setOrders(data);
-        console.log(data);
       });
   }, [userInfo.accessToken, userInfo.email]);
 
