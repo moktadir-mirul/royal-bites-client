@@ -7,15 +7,18 @@ import { toast } from "react-toastify";
 import { Link } from "react-router";
 
 const MyOrders = () => {
-    const {userInfo} = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
   const [ordersLoading, setOrdersLoading] = useState(true);
   useEffect(() => {
-    fetch(`https://royal-bites-rest-server.vercel.app/foodOrders?email=${userInfo.email}`, {
-      headers : {
-        'Authorization' : `Bearer ${userInfo.accessToken}`
+    fetch(
+      `https://royal-bites-rest-server.vercel.app/foodOrders?email=${userInfo.email}`,
+      {
+        headers: {
+          Authorization: `Bearer ${userInfo.accessToken}`,
+        },
       }
-    })
+    )
       .then((res) => res.json())
       .then((data) => {
         setOrders(data);
@@ -24,22 +27,22 @@ const MyOrders = () => {
   }, [userInfo.email, userInfo.accessToken]);
 
   const handleOrderDelete = (id) => {
-          fetch(`https://royal-bites-rest-server.vercel.app/foodOrders/${id}`, {
-              method: "DELETE",
-              headers: {
-                'Authorization' : `Bearer ${userInfo.accessToken}`
-              }
-          })
-          .then(res => res.json())
-          .then(data => {
-            if(data.deletedCount) {
-              const fiteredData = orders.filter(order => order._id !== id);
-              setOrders(fiteredData);
-              toast("Order Deleted Successfully!");
-            }
-          })
-          .catch(err => toast.error(err.message))
-      }
+    fetch(`https://royal-bites-rest-server.vercel.app/foodOrders/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${userInfo.accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          const fiteredData = orders.filter((order) => order._id !== id);
+          setOrders(fiteredData);
+          toast("Order Deleted Successfully!");
+        }
+      })
+      .catch((err) => toast.error(err.message));
+  };
 
   if (ordersLoading) {
     return <LoadingAnimation></LoadingAnimation>;
@@ -68,7 +71,14 @@ const MyOrders = () => {
         My <span className="text-orange-500 dark:text-amber-500">Orders</span>
       </h2>
       <div className="w-11/12 mx-auto py-10 grid grid-cols-1 md:grid-cols-2 gap-5">
-        {orders.map((order, idx) => <OrderCard key={order._id} order={order} idx={idx} handleOrderDelete={handleOrderDelete}></OrderCard>)}
+        {orders.map((order, idx) => (
+          <OrderCard
+            key={order._id}
+            order={order}
+            idx={idx}
+            handleOrderDelete={handleOrderDelete}
+          ></OrderCard>
+        ))}
       </div>
     </div>
   );

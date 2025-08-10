@@ -11,11 +11,14 @@ const MyFoods = () => {
   const [myFoodsLoading, setMyFoodsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://royal-bites-rest-server.vercel.app/foods?email=${userInfo.email}`, {
-      headers: {
-        Authorization: `Bearer ${userInfo.accessToken}`,
-      },
-    })
+    fetch(
+      `https://royal-bites-rest-server.vercel.app/foods?email=${userInfo.email}`,
+      {
+        headers: {
+          Authorization: `Bearer ${userInfo.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setFoods(data);
