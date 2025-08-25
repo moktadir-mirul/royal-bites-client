@@ -64,7 +64,9 @@ const FoodDetails = () => {
             </p>
             <p className="text-sm text-gray-900 dark:text-gray-300">
               Total Quantity:{" "}
-              <span className="inter text-base font-bold">{food.originalQuantity}</span>
+              <span className="inter text-base font-bold">
+                {food.originalQuantity}
+              </span>
             </p>
             <p className="text-sm text-gray-900 dark:text-gray-300">
               Available Quantity:{" "}
@@ -72,16 +74,17 @@ const FoodDetails = () => {
             </p>
             <p className="text-sm font-medium text-orange-500 dark:text-orange-300 flex items-center">
               Price: <TbCurrencyTaka size={20}></TbCurrencyTaka>
-              <span className=" text-base font-bold">
-                {food.price}
-              </span>
+              <span className=" text-base font-bold">{food.price}</span>
             </p>
             <p className="text-base text-gray-900 dark:text-gray-300">
-              Purchase Count: <span className="text-lg font-bold">{food.purchaseCount}</span>
+              Purchase Count:{" "}
+              <span className="text-lg font-bold">{food.purchaseCount}</span>
             </p>
             <p className="text-sm text-gray-900 dark:text-gray-300">
               Added By:{" "}
-              <span className="text-base font-medium capitalize">{food.addedBy}</span>
+              <span className="text-base font-medium capitalize">
+                {food.addedBy}
+              </span>
             </p>
             <p className="text-sm text-gray-900 dark:text-gray-300">
               Email:{" "}
